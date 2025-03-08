@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
     background-image: url("photoo.jpg");
     background-size: cover;
@@ -27,7 +26,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Styles */
+
 input {
     width: 100%;
     padding: 12px 15px;
@@ -62,7 +61,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Thank You Page */
+
 .thank-you-container {
     text-align: center;
 }
@@ -84,7 +83,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Bookstore Styles */
+
 header {
     color: white;
     text-align: center;
@@ -159,7 +158,7 @@ header h1 {
     transform: translateY(-2px);
 }
 
-/* Book Details Page */
+
 .book-details {
     max-width: 800px;
     margin: 0 auto;
@@ -185,7 +184,7 @@ header h1 {
     font-size: 1.1rem;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .book-list {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
