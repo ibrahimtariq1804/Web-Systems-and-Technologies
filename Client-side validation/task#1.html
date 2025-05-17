@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+  <style>
+
+html {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  }
+  
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  
+  
+  .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+  }
+  
+  .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  form {
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .inputGroup {
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  input.valid {
+    border-color: green;
+  }
+  
+  input.invalid {
+    border-color: red;
+  }
+  
+  span {
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    top: auto;
+    width: 100%;
+    text-align: left;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: royalblue;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: dodgerblue;
+  }
+
+  </style>
+
+</head>
+<body>
+
+<form id="myForm" onsubmit="return actionMethod()">
+  <h2>Registration Form</h2>
+
+  <div class="inputGroup">
+    <input type="text" id="name" placeholder="Name" required>
+    <span id="nameError"></span>
+  </div>
+
+  <div class="inputGroup">
+    <input type="email" id="email" placeholder="Email (bahria.edu.pk)" required>
+    <span id="emailError"></span>
+  </div>
+
+  <div class="inputGroup">
+    <input type="password" id="password" placeholder="Password" required>
+    <span id="passwordError"></span>
+  </div>
+
+  <div class="inputGroup">
+    <input type="tel" id="phone" placeholder="Phone (10 digits)" required>
+    <span id="phoneError"></span>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+// Regular Expressions
+const regex = {
+    name: /^[a-zA-Z\s]{2,30}$/,                   
+    email: /^[a-zA-Z0-9._%+-]+@bahria\.edu\.pk$/,  
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,  
+    phone: /^[0-9]{10}$/
+};
+
+// Track validity of each field
+const validStatus = {
+    name: false,
+    email: false,
+    password: false,
+    phone: false
+};
+
+// Validation function
+function validationCheck() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const phoneInput = document.getElementById('phone');
+
+    // Name validation
+    if (regex.name.test(nameInput.value.trim())) {
+        validStatus.name = true;
+        document.getElementById('nameError').textContent = "✅";
+        nameInput.classList.add('valid');
+        nameInput.classList.remove('invalid');
+    } else {
+        validStatus.name = false;
+        document.getElementById('nameError').textContent = "❌ Only letters (2-30 chars)";
+        nameInput.classList.add('invalid');
+        nameInput.classList.remove('valid');
+    }
+
+    // Email validation
+    if (regex.email.test(emailInput.value.trim())) {
+        validStatus.email = true;
+        document.getElementById('emailError').textContent = "✅";
+        emailInput.classList.add('valid');
+        emailInput.classList.remove('invalid');
+    } else {
+        validStatus.email = false;
+        document.getElementById('emailError').textContent = "❌ Use your bahria.edu.pk email";
+        emailInput.classList.add('invalid');
+        emailInput.classList.remove('valid');
+    }
+
+    // Password validation
+    if (regex.password.test(passwordInput.value.trim())) {
+        validStatus.password = true;
+        document.getElementById('passwordError').textContent = "✅";
+        passwordInput.classList.add('valid');
+        passwordInput.classList.remove('invalid');
+    } else {
+        validStatus.password = false;
+        document.getElementById('passwordError').textContent = "❌ Min 6 chars (letters & numbers)";
+        passwordInput.classList.add('invalid');
+        passwordInput.classList.remove('valid');
+    }
+
+    // Phone validation
+    if (regex.phone.test(phoneInput.value.trim())) {
+        validStatus.phone = true;
+        document.getElementById('phoneError').textContent = "✅";
+        phoneInput.classList.add('valid');
+        phoneInput.classList.remove('invalid');
+    } else {
+        validStatus.phone = false;
+        document.getElementById('phoneError').textContent = "❌ 10 digit number";
+        phoneInput.classList.add('invalid');
+        phoneInput.classList.remove('valid');
+    }
+}
+
+// Action method when form is submitted
+function actionMethod() {
+    validationCheck(); // Double check before submit
+
+    if (validStatus.name && validStatus.email && validStatus.password && validStatus.phone) {
+        window.location.href = "destination.html"; // ✅ Redirect if all valid
+        return false;
+    } else {
+        alert("❌ Please correct the form before submitting!");
+        return false; // ❌ Stop submit
+    }
+}
+
+// Live validation while typing
+document.getElementById('name').addEventListener('input', validationCheck);
+document.getElementById('email').addEventListener('input', validationCheck);
+document.getElementById('password').addEventListener('input', validationCheck);
+document.getElementById('phone').addEventListener('input', validationCheck);
+</script>
+
+</body>
+</html>
