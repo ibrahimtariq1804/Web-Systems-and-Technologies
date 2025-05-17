@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      text-align: center;
+      padding: 50px;
+    }
+    #infoBox {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="infoBox">
+    <h2>My Information</h2>
+    <p id="name"></p>
+    <p id="university"></p>
+    <p id="degree"></p>
+    <p id="occupation"></p>
+  </div>
+
+  <script>
+    // Data
+    const name = "Ibrahim Tariq";
+    const university = "Bahria University Islamabad";
+    const degree = "BS in Information Technology";
+    const occupation = "Student / Developer";
+
+    // Display the data
+    document.getElementById("name").textContent = "Name: " + name;
+    document.getElementById("university").textContent = "University: " + university;
+    document.getElementById("degree").textContent = "Degree: " + degree;
+    document.getElementById("occupation").textContent = "Occupation: " + occupation;
+  </script>
+
+</body>
+</html>

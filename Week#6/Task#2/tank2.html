@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Object Length Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>JavaScript Object Length</h2>
+    <p>Click the button to get the number of keys in the object.</p>
+    <button onclick="getObjectLength()">Get Length</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    // Define a JavaScript object
+    const myObject = {
+      name: "Ibrahim",
+      university: "Bahria University",
+      degree: "BS IT",
+      occupation: "Student"
+    };
+
+    // Function to get the length of the object
+    function getObjectLength() {
+      const length = Object.keys(myObject).length;
+      document.getElementById("result").textContent = "Object Length: " + length;
+    }
+  </script>
+
+</body>
+</html>

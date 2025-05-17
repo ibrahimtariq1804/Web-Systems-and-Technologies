@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modify Paragraph</title>
+</head>
+<body>
+
+  <p id="demo">Hello World!</p>
+  <button onclick="toggleVisibility()">Toggle</button>
+
+  <script>
+    // Get the paragraph element
+    const paragraph = document.getElementById("demo");
+
+    // Apply CSS styles using the DOM
+    paragraph.style.backgroundColor = "orange";
+    paragraph.style.textAlign = "left";
+    paragraph.style.fontSize = "30px";
+
+    // Function to toggle visibility
+    function toggleVisibility() {
+      if (paragraph.style.display === "none") {
+        paragraph.style.display = "block";
+      } else {
+        paragraph.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
