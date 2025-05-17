@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyboard & Mouse Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 1.5rem;
+        }
+
+        input[type="text"] {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            width: 300px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1557b0;
+        }
+
+        #output {
+            margin-top: 1.5rem;
+            padding: 10px;
+            background-color: #e8f0fe;
+            border-radius: 5px;
+            color: #1a73e8;
+            font-weight: bold;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Logger</h1>
+        <input type="text" onkeydown="logEvent(event)" onkeyup="logEvent(event)" onkeypress="logEvent(event)" placeholder="Type something here...">
+        <button onclick="logEvent(event)">Click Me</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function logEvent(event) {
+            document.getElementById("output").innerText = event.type + " event triggered!";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mouse Coordinates</title>
+
+</head>
+<body onmousemove="showCoords(event)">
+<h2>Move your mouse to see coordinates</h2>
+<p id="coords"></p>
+
+<script>
+    function showCoords(event) {
+    document.getElementById("coords").innerText = "X: " + event.clientX + " Y: " + event.clientY;
+    }
+    
+
+</script>
+
+</body>
+ 
+</html>
